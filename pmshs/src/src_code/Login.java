@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import admin.main;
 
 /**
  *
@@ -24,7 +25,7 @@ public class Login extends javax.swing.JFrame {
         
         if(!DBConnect.readSettings()) create = true;
         
-        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -43,7 +44,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         uname = new javax.swing.JTextField();
-        role = new javax.swing.JComboBox<>();
+        roleCombo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
 
@@ -64,6 +65,11 @@ public class Login extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +77,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Doctor", "Nurse" }));
+        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Admin", "Doctor", "Nurse" }));
+        roleCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roleComboActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Login to start your session");
@@ -94,7 +105,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(role, 0, 260, Short.MAX_VALUE)
+                            .addComponent(roleCombo, 0, 260, Short.MAX_VALUE)
                             .addComponent(uname)
                             .addComponent(password)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -109,7 +120,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roleCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -164,6 +175,30 @@ public class Login extends javax.swing.JFrame {
     private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_unameActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String selected = roleCombo.getSelectedItem().toString();        
+        
+        if(selected == "Admin"){
+            new main().show(true);
+            dispose();
+        }
+        else if(selected == "Nurse"){
+            JOptionPane.showMessageDialog(null, "Nurse Portal Not Implemented");
+        }
+        else if(selected == "Doctor"){
+            JOptionPane.showMessageDialog(null, "Doctor Portal Not Implemented");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Select User Role");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void roleComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleComboActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_roleComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,7 +261,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField password;
-    private javax.swing.JComboBox<String> role;
+    private javax.swing.JComboBox<String> roleCombo;
     private javax.swing.JTextField uname;
     // End of variables declaration//GEN-END:variables
 }
