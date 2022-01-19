@@ -4,19 +4,38 @@
  */
 package admin;
 
+import java.awt.Font;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import src_code.DBConnect;
+import src_code.controller;
+
 /**
  *
  * @author cchimbadzwa
  */
 public class Users extends javax.swing.JFrame {
-
+    Connection con;
+    PreparedStatement pst;
     /**
      * Creates new form Users
      */
-    public Users() {
+    public Users() throws IOException {
         initComponents();
         
+        if(DBConnect.readSettings()) DBConnect.createCon();
+        
         setLocationRelativeTo(null);
+        jtPopulate();
+        
+        jButton3.setEnabled(false);
+        jButton4.setEnabled(false);
+        
+        jButton2.requestFocusInWindow();
     }
 
     /**
@@ -60,6 +79,14 @@ public class Users extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTable1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTable1FocusLost(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -72,10 +99,25 @@ public class Users extends javax.swing.JFrame {
         });
 
         jButton2.setText("REFRESH");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("EDIT");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("DELETE");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -113,7 +155,7 @@ public class Users extends javax.swing.JFrame {
                 .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(235, Short.MAX_VALUE)
+                .addContainerGap(308, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(222, 222, 222))
         );
@@ -139,10 +181,6 @@ public class Users extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(428, 428, 428)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,13 +188,16 @@ public class Users extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(425, 425, 425))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jButton5)
@@ -194,6 +235,107 @@ public class Users extends javax.swing.JFrame {
         new addUser().show(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        jtPopulate();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+        // TODO add your handling code here:
+        jButton3.setEnabled(true);
+        jButton4.setEnabled(true);
+    }//GEN-LAST:event_jTable1FocusGained
+
+    private void jTable1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusLost
+        // TODO add your handling code here:
+        
+        boolean resp = (jTable1.getSelectedRow() == -1);
+        if(resp){
+            jButton4.setEnabled(false);
+            jButton3.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTable1FocusLost
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int dialogDelete=JOptionPane.showConfirmDialog(null,"Are you sure you want to delete this User?", "DELETE USER",JOptionPane.YES_NO_OPTION);
+        if(dialogDelete==JOptionPane.YES_OPTION){      
+            int row = jTable1.getSelectedRow();
+            DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
+
+            String selected = model.getValueAt(row, 0).toString();
+
+            if (row >= 0) {
+
+                try {
+                    DBConnect.getConnection();
+                    pst = con.prepareStatement("UPDATE users SET status='deleted' WHERE uname='"+selected+"'");
+                    pst.executeUpdate();
+                    
+                    JOptionPane.showMessageDialog(null,"USER DELETED..!!!","Confirmation",JOptionPane.INFORMATION_MESSAGE);
+                    
+                    model.removeRow(row);
+                  }
+                catch (Exception w) {
+                    System.out.println(w);
+                }         
+            }
+
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"OPERATION CANCELLED");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
+
+        String selected = model.getValueAt(row, 0).toString();
+        controller.setEmpId(selected);
+        
+        new editUser().show(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+//    Custom code
+    public void jtPopulate(){
+        Object[] row = new Object[10];
+        Object[] colum = {"Username","Fullname","National ID","Email","Gender","Department","Phone","Role","Status","Date"};
+        
+        DefaultTableModel mod = new DefaultTableModel();
+        mod.setColumnIdentifiers(colum);
+        jTable1.setModel(mod);
+        jTable1.setRowHeight(30);
+        jTable1.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 12));        
+
+        try{
+           con= DBConnect.getConnection();
+           Statement st=con.createStatement();
+           ResultSet rst=st.executeQuery("select * from users where status='active'");
+           while(rst.next()){               
+               
+               row[0] = rst.getString("uname");               
+               row[1] = rst.getString("fname") + " " + rst.getString("lname");
+               row[2] = rst.getString("natid");
+               row[3] = rst.getString("email");
+               row[4] = rst.getString("gender");
+               row[5] = rst.getString("department");
+               row[6] = rst.getString("phone");
+               row[7] = rst.getString("type");
+               row[8] = rst.getString("status");
+               row[9] = rst.getString("date");
+                 
+               mod.addRow(row);
+           }
+           //con.close();
+        }
+        catch(SQLException e){
+          JOptionPane.showMessageDialog( null,"USERS TABLE ERROR..\n\n" + e.getMessage());  
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -224,7 +366,11 @@ public class Users extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Users().setVisible(true);
+                try {
+                    new Users().setVisible(true);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
             }
         });
     }

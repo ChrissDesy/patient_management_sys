@@ -120,15 +120,15 @@ public class addUser extends javax.swing.JFrame {
 
         jLabel9.setText("User Type");
 
-        urole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Admin", "Doctor", "Nurse" }));
+        urole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Admin", "Clerk", "Doctor", "Nurse" }));
 
         jLabel10.setText("Section");
 
-        dpt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Dental", "Eye Unit", "Physiotherapy", " " }));
+        dpt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Admissions", "Laboratory", "Maternity", "Pharmacy", "Physiotherapy", "Radiograph", "System" }));
 
         jLabel11.setText("Password");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("SAVE USER");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,9 +141,9 @@ public class addUser extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,8 +189,8 @@ public class addUser extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(pwd))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(214, 214, 214)))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
