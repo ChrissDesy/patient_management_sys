@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import admin.main;
+import main.Clerk;
 
 /**
  *
@@ -195,7 +196,13 @@ public class Login extends javax.swing.JFrame {
                     dispose();
                 }
                 else if(selected.equals("Clerk")){
-                    JOptionPane.showMessageDialog(null, "Clerk Portal Not Implemented");
+                    try {
+                        //                    JOptionPane.showMessageDialog(null, "Clerk Portal Not Implemented");
+                        new Clerk().show(true);
+                        dispose();
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+                    }
                 }
                 else if(selected.equals("Nurse")){
                     JOptionPane.showMessageDialog(null, "Nurse Portal Not Implemented");

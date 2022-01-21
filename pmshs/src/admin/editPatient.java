@@ -2,24 +2,58 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package main;
+package admin;
 
+import java.io.IOException;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import src_code.DBConnect;
 import src_code.controller;
 
 /**
  *
  * @author cchimbadzwa
  */
-public class addPatient extends javax.swing.JFrame {
+public class editPatient extends javax.swing.JFrame {
 
+    String patid;
+    
     /**
-     * Creates new form addPatient
+     * Creates new form editPatient
      */
-    public addPatient() {
+    public editPatient() {
         initComponents();
         
         setLocationRelativeTo(null);
+        patid = controller.getPatId();
+        
+        try{
+            Connection con = DBConnect.getConnection();
+            Statement st = con.createStatement();
+            String query = "SELECT * FROM patients WHERE patid='"+patid+"'";
+            ResultSet rs = st.executeQuery(query);
+            if(rs.next()){
+                fname.setText(rs.getString("fname"));
+                lname.setText(rs.getString("lname"));
+                phone.setText(rs.getString("phone"));
+                email.setText(rs.getString("email"));
+                address.setText(rs.getString("address"));
+                natid.setText(rs.getString("natid"));
+                gender.setSelectedItem(rs.getString("gender"));
+                kname.setText(rs.getString("kin_name"));
+                kemail.setText(rs.getString("kin_email"));
+                kphone.setText(rs.getString("kin_phone"));
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No data found");
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex,"ERROR",0);
+        }
+        
     }
 
     /**
@@ -65,7 +99,7 @@ public class addPatient extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("ADD NEW PATIENT");
+        jLabel1.setText("UPDATE PATIENT DETAILS");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -256,17 +290,16 @@ public class addPatient extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 238, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(244, 244, 244))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addContainerGap())))
+                        .addGap(0, 636, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(220, 220, 220))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,11 +333,6 @@ public class addPatient extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void knameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_knameActionPerformed
@@ -319,33 +347,30 @@ public class addPatient extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        boolean resp = controller.addPatient(kname.getText(), fname.getText(), lname.getText(), natid.getText(), address.getText(), email.getText(), 
-                kemail.getText(), phone.getText(), kphone.getText(), gender.getSelectedItem().toString());
-        
+        boolean resp = controller.editPatient(kname.getText(), fname.getText(), lname.getText(), natid.getText(), address.getText(), email.getText(),
+            kemail.getText(), phone.getText(), kphone.getText(), gender.getSelectedItem().toString(), patid);
+
         if(resp){
-            JOptionPane.showMessageDialog(null, "Patient Added Successfully.", "CONFIRMATION", JOptionPane.INFORMATION_MESSAGE);
-                              
-            int lyn = JOptionPane.showConfirmDialog(null, "Do you want to ADD another Patient.?");
-            if (lyn == 0){
-                address.setText("");
-                fname.setText("");                
-                lname.setText("");
-                natid.setText("");
-                email.setText("");               
-                gender.setSelectedIndex(0);
-                phone.setText("");
-                kname.setText("");
-                kemail.setText("");
-                kphone.setText("");
-            }
-            else{
-                this.dispose();
+            JOptionPane.showMessageDialog(null, "Patient Updated Successfully.", "CONFIRMATION", JOptionPane.INFORMATION_MESSAGE);
+
+            dispose();
+            
+            try {
+                Patients pt = new Patients();
+                pt.jtPopulate();
+            } catch (IOException ex) {
+                 JOptionPane.showMessageDialog(null, ex);
             }
         }
         else{
-            JOptionPane.showMessageDialog(null, "FAILED TO ADD PATIENT..!!!\n try again", "ERROR",0);
+            JOptionPane.showMessageDialog(null, "FAILED TO UPDATE PATIENT..!!!\n try again", "ERROR",0);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -364,20 +389,20 @@ public class addPatient extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addPatient().setVisible(true);
+                new editPatient().setVisible(true);
             }
         });
     }

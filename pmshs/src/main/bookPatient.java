@@ -339,7 +339,7 @@ public class bookPatient extends javax.swing.JFrame {
            //con.close();
         }
         catch(SQLException e){
-          JOptionPane.showMessageDialog( null,"PATIENTs TABLE ERROR..\n\n" + e.getMessage());  
+          JOptionPane.showMessageDialog( null,"PATIENTS TABLE ERROR..\n\n" + e.getMessage());  
         }
     }
     

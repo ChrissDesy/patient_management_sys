@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author cchimbadzwa
  */
 public class controller {
-    public static String empId, userRole;
+    public static String empId, userRole, patId;
     
     public static String unique_id() {
         String id;
@@ -198,6 +198,43 @@ public class controller {
             JOptionPane.showMessageDialog(null, e, "ERROR", 0);
             return false;
         }
+    }
+    
+    public static void setPatId(String em) {
+        patId = em;
+    }
+
+    public static String getPatId() {
+        return patId;
+    }
+    
+    public static boolean editPatient(
+            String kname, String name, String sname, String natid, String addr, 
+            String email, String kemail, String phone, String kphone, String gender, String pt) {
+        Connection con = null;
+        Statement st = null;
+        
+        try {
+            con = DBConnect.getConnection();
+            st = con.createStatement();
+            
+            String query = "UPDATE patients SET fname='"+name+"', gender='"+gender+"',"
+                    + "lname='"+sname+"', email='"+email+"', natid='"+natid+"', kin_name='"+kname+"',"
+                    + "phone='"+phone+"', address='"+addr+"', kin_email='"+kemail+"', kin_phone='"+kphone+"' "
+                    + "WHERE patid='"+pt+"'";
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.executeUpdate();
+            
+            System.out.println("Patient updated successfully...!!");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Patient not updated.\n\tError: " + e);
+            JOptionPane.showMessageDialog(null, e, "ERROR", 0);
+            return false;
+        }
+
     }
     
     
