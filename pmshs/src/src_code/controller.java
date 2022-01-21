@@ -141,5 +141,65 @@ public class controller {
         return userRole;
     }
     
+    public static boolean addPatient(
+            String kname, String name, String sname, String natid, String addr, 
+            String email, String kemail, String phone, String kphone, String gender) {
+        Connection con = null;
+        CallableStatement csmt = null;
+        boolean t = true;
+        
+        try {
+            con = DBConnect.getConnection();
+            csmt = con.prepareCall("INSERT into patients VALUES (0,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            csmt.setString(1, name);
+            csmt.setString(2, sname);
+            csmt.setString(3, natid);
+            csmt.setString(4, email);
+            csmt.setString(5, gender);
+            csmt.setString(6, phone);
+            csmt.setString(7, addr);
+            csmt.setString(12, kemail);
+            csmt.setString(13, kphone);
+            csmt.setString(8, "PT" + unique_id());
+            csmt.setString(11, kname);
+            csmt.setString(10, "active");
+            csmt.setString(9, getDate());
+
+            t = csmt.execute();
+            System.out.println("Patient added successfully...!!");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Patient not Added.\n\tError: " + e);
+            JOptionPane.showMessageDialog(null, e, "ERROR", 0);
+            t = false;
+        }
+
+        return t;
+    }
+    
+    public static boolean addVisit(String patId){
+        Connection con = null;
+        CallableStatement csmt = null;
+        
+        try {
+            con = DBConnect.getConnection();
+            csmt = con.prepareCall("INSERT into visits VALUES (0,?,?,?)");
+            csmt.setString(1, patId);
+            csmt.setString(3, "active");
+            csmt.setString(2, getDate());
+
+            csmt.execute();
+            System.out.println("Visit added successfully...!!");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Visit not Added.\n\tError: " + e);
+            JOptionPane.showMessageDialog(null, e, "ERROR", 0);
+            return false;
+        }
+    }
+    
+    
     
 }
