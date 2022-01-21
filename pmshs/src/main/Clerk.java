@@ -21,6 +21,7 @@ import src_code.Login;
  */
 public class Clerk extends javax.swing.JFrame {
     Connection con;
+    PreparedStatement pst;
     /**
      * Creates new form Clerk
      */
@@ -66,6 +67,7 @@ public class Clerk extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -201,8 +203,20 @@ public class Clerk extends javax.swing.JFrame {
         });
 
         jButton5.setText("DISCHARGE");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("VIEW DETAILS");
+
+        jButton8.setText("REFRESH TABLE");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -218,14 +232,15 @@ public class Clerk extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))))
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -241,7 +256,9 @@ public class Clerk extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
+                .addComponent(jButton8)
+                .addGap(42, 42, 42)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
@@ -356,6 +373,7 @@ public class Clerk extends javax.swing.JFrame {
     private void jTable1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusLost
         // TODO add your handling code here:
         boolean resp = (jTable1.getSelectedRow() == -1);
+        System.out.println(jTable1.getSelectedRow());
         if(resp){
             jButton5.setEnabled(false);
             jButton6.setEnabled(false);
@@ -386,6 +404,44 @@ public class Clerk extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        int dialogDelete=JOptionPane.showConfirmDialog(null,"Are you sure you want to discharge this Patient?", "DISCHARGE PATIENT",JOptionPane.YES_NO_OPTION);
+        if(dialogDelete==JOptionPane.YES_OPTION){      
+            int row = jTable1.getSelectedRow();
+            DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
+
+            String selected = model.getValueAt(row, 0).toString();
+
+            if (row >= 0) {
+
+                try {
+                    DBConnect.getConnection();
+                    pst = con.prepareStatement("UPDATE visits SET status='discharged' WHERE patid='"+selected+"' and status='active'");
+                    pst.executeUpdate();
+                    
+                    JOptionPane.showMessageDialog(null,"PATIENT DISCHARGED..!!!","Confirmation",JOptionPane.INFORMATION_MESSAGE);
+                    
+                    model.removeRow(row);
+                  }
+                catch (Exception w) {
+                    System.out.println(w);
+                    JOptionPane.showMessageDialog(null, w);
+                }         
+            }
+
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"OPERATION CANCELLED");
+        }
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        activeVisits();
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     //    custom code
     public void activeVisits(){
@@ -433,7 +489,13 @@ public class Clerk extends javax.swing.JFrame {
         try{
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
-           ResultSet rst=st.executeQuery("select * from patients where concat_ws(fname,lname,email,patid,natid) like '%"+ref+"%'");
+           String query = "select p.patid, fname, lname, natid, email, gender, phone " +
+                            "from patients as p, visits as v " +
+                            "where p.patid in (" +
+                            "	select patid from visits where status='active'" +
+                            ")" +
+                            "and concat_ws(fname,lname,email,p.patid,natid) like '%"+ref+"%'";
+           ResultSet rst=st.executeQuery(query);
            while(rst.next()){               
                
                row[1] = rst.getString("fname") + " " + rst.getString("lname");
@@ -498,6 +560,7 @@ public class Clerk extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -317,7 +317,13 @@ public class bookPatient extends javax.swing.JFrame {
         try{
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
-           ResultSet rst=st.executeQuery("select * from patients where concat_ws(fname,lname,email,patid,natid) like '%"+ref+"%'");
+           String query = "select p.patid, p.status, fname, lname, natid, email, gender, phone " +
+                            "from patients as p, visits as v " +
+                            "where p.patid not in (" +
+                            "	select patid from visits where v.status='active'" +
+                            ")" +
+                            "and concat_ws(fname,lname,email,p.patid,natid) like '%"+ref+"%'";
+           ResultSet rst=st.executeQuery(query);
            while(rst.next()){               
                
                row[0] = rst.getString("status");               
