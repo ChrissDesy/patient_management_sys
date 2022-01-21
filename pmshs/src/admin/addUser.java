@@ -120,11 +120,11 @@ public class addUser extends javax.swing.JFrame {
 
         jLabel9.setText("User Type");
 
-        urole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Admin", "Clerk", "Doctor", "Nurse" }));
+        urole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Admin", "Clerk", "Doctor", "Nurse", "Pharmacy", "Specialist" }));
 
         jLabel10.setText("Section");
 
-        dpt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Admissions", "Laboratory", "Maternity", "Pharmacy", "Physiotherapy", "Radiograph", "System" }));
+        dpt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Admissions", "Laboratory", "Maternity", "Pharmacy", "Physiotherapy", "Radiograph", "Staff", "System" }));
 
         jLabel11.setText("Password");
 

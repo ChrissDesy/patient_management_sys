@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author cchimbadzwa
  */
 public class controller {
-    public static String empId, userRole, patId;
+    public static String empId, userRole, patId, loggedUser;
     
     public static String unique_id() {
         String id;
@@ -127,6 +127,7 @@ public class controller {
             rs = ps.executeQuery();
             if (rs.next()) {
                 userRole = rs.getString("type");
+                loggedUser = rs.getString("uname");
                 return true;
             } else {
                 return false;
@@ -237,6 +238,119 @@ public class controller {
 
     }
     
+    public static boolean addPrecheck(
+            String patid, String visitid, String temp, String blood, String weight, String other) {
+        Connection con = null;
+        CallableStatement csmt = null;
+        
+        try {
+            con = DBConnect.getConnection();
+            csmt = con.prepareCall("INSERT into precheck VALUES (0,?,?,?,?,?,?,?,?,?)");
+            csmt.setString(1, patid);
+            csmt.setString(2, visitid);
+            csmt.setString(3, temp);
+            csmt.setString(4, blood);
+            csmt.setString(5, weight);
+            csmt.setString(6, other);
+            csmt.setString(8, "active");
+            csmt.setString(7, getDate());
+            csmt.setString(9, getLoggedUser());
+
+            csmt.execute();
+            System.out.println("Precheck added successfully...!!");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Precheck not Added.\n\tError: " + e);
+            JOptionPane.showMessageDialog(null, e, "ERROR", 0);
+            return false;
+        }
+    }
+    
+    public static String getLoggedUser() {
+        return loggedUser.equals("") ? "-" : loggedUser;
+    }
+    
+    public static boolean addConsultation(
+            String patid, String visitid, String description, String prescription) {
+        Connection con = null;
+        CallableStatement csmt = null;
+        
+        try {
+            con = DBConnect.getConnection();
+            csmt = con.prepareCall("INSERT into consultation VALUES (0,?,?,?,?,?,?,?)");
+            csmt.setString(1, patid);
+            csmt.setString(2, visitid);
+            csmt.setString(5, description);
+            csmt.setString(6, prescription);
+            csmt.setString(7, "active");
+            csmt.setString(3, getDate());
+            csmt.setString(4, getLoggedUser());
+
+            csmt.execute();
+            System.out.println("Consultation added successfully...!!");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Consultation not Added.\n\tError: " + e);
+            JOptionPane.showMessageDialog(null, e, "ERROR", 0);
+            return false;
+        }
+    }
+    
+    public static boolean addPrescription(
+            String patid, String visitid, String desc) {
+        Connection con = null;
+        CallableStatement csmt = null;
+        
+        try {
+            con = DBConnect.getConnection();
+            csmt = con.prepareCall("INSERT into prescription VALUES (0,?,?,?,?,?,?,?)");
+            csmt.setString(1, patid);
+            csmt.setString(2, visitid);
+            csmt.setString(5, desc);
+            csmt.setString(7, getLoggedUser());
+            csmt.setString(4, "active");
+            csmt.setString(3, getDate());
+            csmt.setString(6, getLoggedUser());
+
+            csmt.execute();
+            System.out.println("Prescription added successfully...!!");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Prescription not Added.\n\tError: " + e);
+            JOptionPane.showMessageDialog(null, e, "ERROR", 0);
+            return false;
+        }
+    }
+    
+    public static boolean addProcedure(
+            String patid, String visitid, String description, String dpt) {
+        Connection con = null;
+        CallableStatement csmt = null;
+        
+        try {
+            con = DBConnect.getConnection();
+            csmt = con.prepareCall("INSERT into procedures VALUES (0,?,?,?,?,?,?,?)");
+            csmt.setString(1, patid);
+            csmt.setString(2, visitid);
+            csmt.setString(7, description);
+            csmt.setString(4, dpt);
+            csmt.setString(6, "active");
+            csmt.setString(3, getDate());
+            csmt.setString(5, getLoggedUser());
+
+            csmt.execute();
+            System.out.println("Procedure added successfully...!!");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Procedure not Added.\n\tError: " + e);
+            JOptionPane.showMessageDialog(null, e, "ERROR", 0);
+            return false;
+        }
+    }
     
     
 }

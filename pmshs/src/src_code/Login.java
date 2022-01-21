@@ -210,6 +210,12 @@ public class Login extends javax.swing.JFrame {
                 else if(selected.equals("Doctor")){
                     JOptionPane.showMessageDialog(null, "Doctor Portal Not Implemented");
                 }
+                else if(selected.equals("Specialist")){
+                    JOptionPane.showMessageDialog(null, "Doctor Portal Not Implemented");
+                }
+                else if(selected.equals("Pharmacy")){
+                    JOptionPane.showMessageDialog(null, "Pharmacy Portal Not Implemented");
+                }
                 else{
                     JOptionPane.showMessageDialog(null, "Invalid User Role: " + selected, "ERROR", 0);
                 }

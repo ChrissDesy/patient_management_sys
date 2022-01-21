@@ -317,12 +317,14 @@
             <Component class="javax.swing.JComboBox" name="urole">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
+                  <StringArray count="7">
                     <StringItem index="0" value="choose..."/>
                     <StringItem index="1" value="Admin"/>
                     <StringItem index="2" value="Clerk"/>
                     <StringItem index="3" value="Doctor"/>
                     <StringItem index="4" value="Nurse"/>
+                    <StringItem index="5" value="Pharmacy"/>
+                    <StringItem index="6" value="Specialist"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -338,7 +340,7 @@
             <Component class="javax.swing.JComboBox" name="dpt">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="8">
+                  <StringArray count="9">
                     <StringItem index="0" value="choose..."/>
                     <StringItem index="1" value="Admissions"/>
                     <StringItem index="2" value="Laboratory"/>
@@ -346,7 +348,8 @@
                     <StringItem index="4" value="Pharmacy"/>
                     <StringItem index="5" value="Physiotherapy"/>
                     <StringItem index="6" value="Radiograph"/>
-                    <StringItem index="7" value="System"/>
+                    <StringItem index="7" value="Staff"/>
+                    <StringItem index="8" value="System"/>
                   </StringArray>
                 </Property>
               </Properties>

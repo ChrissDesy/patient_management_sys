@@ -4,33 +4,33 @@
  */
 package main;
 
-import admin.main;
 import java.awt.Font;
 import java.io.IOException;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import src_code.DBConnect;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import src_code.Login;
 
 /**
  *
  * @author cchimbadzwa
  */
-public class Clerk extends javax.swing.JFrame {
+public class Nurse extends javax.swing.JFrame {
+
     Connection con;
     PreparedStatement pst;
+    
     /**
-     * Creates new form Clerk
+     * Creates new form Nurse
      */
-    public Clerk() throws IOException {
+    public Nurse() throws IOException {
         initComponents();
         
         setLocationRelativeTo(null);
-        
-//        if(DBConnect.readSettings()) DBConnect.createCon();
+        if(DBConnect.readSettings()) DBConnect.createCon();
         
         activeVisits();
         jButton5.setEnabled(false);
@@ -59,10 +59,8 @@ public class Clerk extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jButton5 = new javax.swing.JButton();
@@ -75,7 +73,7 @@ public class Clerk extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("ADMISSIONS CLERK PORTAL");
+        jLabel1.setText("NURSE PORTAL");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -178,22 +176,8 @@ public class Clerk extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel4.setName(""); // NOI18N
 
-        jButton2.setText("ADD NEW PATIENT");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Options");
-
-        jButton3.setText("BOOK VISIT");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jButton4.setText("SEARCH PATIENT");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -202,7 +186,7 @@ public class Clerk extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("DISCHARGE");
+        jButton5.setText("DO PRECHECK");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -237,10 +221,8 @@ public class Clerk extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -250,11 +232,7 @@ public class Clerk extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
+                .addGap(53, 53, 53)
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
                 .addComponent(jButton8)
@@ -300,10 +278,6 @@ public class Clerk extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(342, 342, 342)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -311,6 +285,10 @@ public class Clerk extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(399, 399, 399))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,26 +322,6 @@ public class Clerk extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        try {
-            new Login().show(true);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        new addPatient().show(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        new bookPatient().show(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
         // TODO add your handling code here:
         jButton5.setEnabled(true);
@@ -380,11 +338,6 @@ public class Clerk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTable1FocusLost
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        // TODO add your handling code here:
-        jTextField1.setText("");
-    }//GEN-LAST:event_jTextField1FocusGained
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         if(jTextField1.getText().equals("") || jTextField1.getText().equals("search patient id, name, email, national id...")){
@@ -395,47 +348,25 @@ public class Clerk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        // TODO add your handling code here:
+        jTextField1.setText("");
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         jTextField1.setEnabled(true);
         jButton7.setEnabled(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        int dialogDelete=JOptionPane.showConfirmDialog(null,"Are you sure you want to discharge this Patient?", "DISCHARGE PATIENT",JOptionPane.YES_NO_OPTION);
-        if(dialogDelete==JOptionPane.YES_OPTION){      
-            int row = jTable1.getSelectedRow();
-            DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
-
-            String selected = model.getValueAt(row, 0).toString();
-
-            if (row >= 0) {
-
-                try {
-                    DBConnect.getConnection();
-                    pst = con.prepareStatement("UPDATE visits SET status='discharged' WHERE patid='"+selected+"' and status='active'");
-                    pst.executeUpdate();
-                    
-                    JOptionPane.showMessageDialog(null,"PATIENT DISCHARGED..!!!","Confirmation",JOptionPane.INFORMATION_MESSAGE);
-                    
-                    model.removeRow(row);
-                  }
-                catch (Exception w) {
-                    System.out.println(w);
-                    JOptionPane.showMessageDialog(null, w);
-                }         
-            }
-
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"OPERATION CANCELLED");
-        }
         
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -443,10 +374,20 @@ public class Clerk extends javax.swing.JFrame {
         activeVisits();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        try {
+            new Login().show(true);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     //    custom code
     public void activeVisits(){
-        Object[] row = new Object[7];
-        Object[] colum = {"Patient ID","Fullname","National ID","Email","Gender","Phone"};
+        Object[] row = new Object[8];
+        Object[] colum = {"Visit ID","Patient ID","Fullname","National ID","Email","Gender","Phone"};
         
         DefaultTableModel mod = new DefaultTableModel();
         mod.setColumnIdentifiers(colum);
@@ -457,28 +398,28 @@ public class Clerk extends javax.swing.JFrame {
         try{
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
-           ResultSet rst=st.executeQuery("select p.patid, fname, lname, email, phone, gender, natid, v.status from patients as p, visits as v where p.patid = v.patid and v.status = 'active'");
+           ResultSet rst=st.executeQuery("select p.patid, fname, lname, email, phone, gender, natid, v.status, v.id as vid from patients as p, visits as v where p.patid = v.patid and v.status = 'active'");
            while(rst.next()){               
-               
-               row[1] = rst.getString("fname") + " " + rst.getString("lname");
-               row[2] = rst.getString("natid");
-               row[3] = rst.getString("email");
-               row[4] = rst.getString("gender");
-               row[0] = rst.getString("patid");
-               row[5] = rst.getString("phone");
+               row[0] = rst.getString("vid");
+               row[2] = rst.getString("fname") + " " + rst.getString("lname");
+               row[3] = rst.getString("natid");
+               row[4] = rst.getString("email");
+               row[5] = rst.getString("gender");
+               row[1] = rst.getString("patid");
+               row[6] = rst.getString("phone");
                  
                mod.addRow(row);
            }
            //con.close();
         }
         catch(SQLException e){
-          JOptionPane.showMessageDialog( null,"PATIENTs TABLE ERROR..\n\n" + e.getMessage());  
+          JOptionPane.showMessageDialog( null,"PATIENTS TABLE ERROR..\n\n" + e.getMessage());  
         }
     }
     
     public void searchPatient(String ref){
-        Object[] row = new Object[7];
-        Object[] colum = {"Patient ID","Fullname","National ID","Email","Gender","Phone"};
+        Object[] row = new Object[8];
+        Object[] colum = {"Visit ID","Patient ID","Fullname","National ID","Email","Gender","Phone"};
         
         DefaultTableModel mod = new DefaultTableModel();
         mod.setColumnIdentifiers(colum);
@@ -489,21 +430,21 @@ public class Clerk extends javax.swing.JFrame {
         try{
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
-           String query = "select p.patid, fname, lname, natid, email, gender, phone " +
-                            "from patients as p " +
-                            "where p.patid in (" +
+           String query = "select v.id as vid, p.patid, fname, lname, natid, email, gender, phone " +
+                            "from patients as p, visits as v " +
+                            "where p.patid=v.patid and p.patid in (" +
                             "	select patid from visits where status='active'" +
                             ")" +
                             "and concat_ws(fname,lname,email,p.patid,natid) like '%"+ref+"%'";
            ResultSet rst=st.executeQuery(query);
            while(rst.next()){               
-               
-               row[1] = rst.getString("fname") + " " + rst.getString("lname");
-               row[2] = rst.getString("natid");
-               row[3] = rst.getString("email");
-               row[4] = rst.getString("gender");
-               row[0] = rst.getString("patid");
-               row[5] = rst.getString("phone");
+               row[0] = rst.getString("vid");
+               row[2] = rst.getString("fname") + " " + rst.getString("lname");
+               row[3] = rst.getString("natid");
+               row[4] = rst.getString("email");
+               row[5] = rst.getString("gender");
+               row[1] = rst.getString("patid");
+               row[6] = rst.getString("phone");
                  
                mod.addRow(row);
            }
@@ -530,13 +471,13 @@ public class Clerk extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Clerk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nurse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Clerk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nurse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Clerk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nurse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Clerk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Nurse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -544,7 +485,7 @@ public class Clerk extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Clerk().setVisible(true);
+                    new Nurse().setVisible(true);
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }
@@ -554,8 +495,6 @@ public class Clerk extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
