@@ -318,9 +318,9 @@ public class bookPatient extends javax.swing.JFrame {
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
            String query = "select p.patid, p.status, fname, lname, natid, email, gender, phone " +
-                            "from patients as p, visits as v " +
+                            "from patients as p " +
                             "where p.patid not in (" +
-                            "	select patid from visits where v.status='active'" +
+                            "	select patid from visits where status='active'" +
                             ")" +
                             "and concat_ws(fname,lname,email,p.patid,natid) like '%"+ref+"%'";
            ResultSet rst=st.executeQuery(query);
