@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import admin.main;
 import main.Clerk;
 import main.Nurse;
+import main.Pharmacy;
 
 /**
  *
@@ -220,7 +221,11 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Doctor Portal Not Implemented");
                 }
                 else if(selected.equals("Pharmacy")){
-                    JOptionPane.showMessageDialog(null, "Pharmacy Portal Not Implemented");
+                    try {
+                        new Pharmacy().show(true);
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+                    }
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Invalid User Role: " + selected, "ERROR", 0);

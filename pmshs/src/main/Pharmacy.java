@@ -19,21 +19,20 @@ import src_code.controller;
  *
  * @author cchimbadzwa
  */
-public class Doctor extends javax.swing.JFrame {
+public class Pharmacy extends javax.swing.JFrame {
 
     Connection con;
     PreparedStatement pst;
     /**
-     * Creates new form Doctor
+     * Creates new form Pharmacy
      */
-    public Doctor() throws IOException {
+    public Pharmacy() throws IOException {
         initComponents();
         
         setLocationRelativeTo(null);
-//        if(DBConnect.readSettings()) DBConnect.createCon();
         
-        activeVisits();
-        jButton5.setEnabled(false);
+        if(DBConnect.readSettings()) DBConnect.createCon();
+        activePrescriptions();
         jButton6.setEnabled(false);
         jTextField1.setEnabled(false);
         jButton7.setEnabled(false);
@@ -63,7 +62,6 @@ public class Doctor extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jButton4 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -73,7 +71,7 @@ public class Doctor extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("DOCTOR PORTAL");
+        jLabel1.setText("PHARMACY PORTAL");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -81,13 +79,13 @@ public class Doctor extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient ID", "Fullname", "Email", "Phone", "National ID", "Gender"
+                "Reference", "Date", "Patient ID", "Fullname", "Visit", "Visit Date", "Done By"
             }
         ));
         jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -101,7 +99,7 @@ public class Doctor extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Patients With Active Visits");
+        jLabel3.setText("List of Active Prescriptions");
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -179,21 +177,19 @@ public class Doctor extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Options");
 
-        jButton4.setText("SEARCH PATIENT");
+        jButton4.setText("SEARCH");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("DO CONSULTATION");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButton6.setText("VIEW DETAILS");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
-
-        jButton6.setText("VIEW DETAILS");
 
         jButton8.setText("REFRESH TABLE");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -215,9 +211,7 @@ public class Doctor extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -238,9 +232,7 @@ public class Doctor extends javax.swing.JFrame {
                 .addComponent(jButton8)
                 .addGap(42, 42, 42)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addComponent(jButton6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -287,8 +279,8 @@ public class Doctor extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(399, 399, 399))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(369, 369, 369))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +316,6 @@ public class Doctor extends javax.swing.JFrame {
 
     private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
         // TODO add your handling code here:
-        jButton5.setEnabled(true);
         jButton6.setEnabled(true);
     }//GEN-LAST:event_jTable1FocusGained
 
@@ -333,7 +324,6 @@ public class Doctor extends javax.swing.JFrame {
         boolean resp = (jTable1.getSelectedRow() == -1);
         // System.out.println(jTable1.getSelectedRow());
         if(resp){
-            jButton5.setEnabled(false);
             jButton6.setEnabled(false);
         }
     }//GEN-LAST:event_jTable1FocusLost
@@ -363,20 +353,9 @@ public class Doctor extends javax.swing.JFrame {
         jButton7.setEnabled(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        int row = jTable1.getSelectedRow();
-        DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
-
-        String selected = model.getValueAt(row, 1).toString();
-        controller.setPatId(selected);
-
-        new consult().show(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        activeVisits();
+        activePrescriptions();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -389,10 +368,21 @@ public class Doctor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
+
+        String selected = model.getValueAt(row, 0).toString();
+        controller.setPrescId(selected);
+        
+        new viewPrescription().show(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     //    custom code
-    public void activeVisits(){
-        Object[] row = new Object[8];
-        Object[] colum = {"Visit ID","Patient ID","Fullname","National ID","Email","Gender","Phone"};
+    public void activePrescriptions(){
+        Object[] row = new Object[7];
+        Object[] colum = {"Reference","Date","Patient ID","Fullname","Visit ID","Visit Date","Done By"};
         
         DefaultTableModel mod = new DefaultTableModel();
         mod.setColumnIdentifiers(colum);
@@ -403,28 +393,33 @@ public class Doctor extends javax.swing.JFrame {
         try{
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
-           ResultSet rst=st.executeQuery("select p.patid, fname, lname, email, phone, gender, natid, v.status, v.id as vid from patients as p, visits as v where p.patid = v.patid and v.status = 'active' and v.stage='precheck'");
+           String query = "select r.id as ref, fname, lname, v.date as vdate, p.patid, v.id as vid, r.date as pdate, r.done_by " +
+                        "from patients as p, visits as v, prescription as r " +
+                        "where p.patid = r.patid " +
+                        "and v.id = r.visitid " +
+                        "and r.status = 'active';";
+           ResultSet rst=st.executeQuery(query);
            while(rst.next()){               
-               row[0] = rst.getString("vid");
-               row[2] = rst.getString("fname") + " " + rst.getString("lname");
-               row[3] = rst.getString("natid");
-               row[4] = rst.getString("email");
-               row[5] = rst.getString("gender");
-               row[1] = rst.getString("patid");
-               row[6] = rst.getString("phone");
+               row[0] = rst.getString("ref");
+               row[3] = rst.getString("fname") + " " + rst.getString("lname");
+               row[2] = rst.getString("patid");
+               row[4] = rst.getString("vid");
+               row[5] = rst.getString("vdate");
+               row[1] = rst.getString("pdate");
+               row[6] = rst.getString("done_by");
                  
                mod.addRow(row);
            }
            //con.close();
         }
         catch(SQLException e){
-          JOptionPane.showMessageDialog( null,"PATIENTS TABLE ERROR..\n\n" + e.getMessage());  
+          JOptionPane.showMessageDialog( null,"PRESCRIPTIONS TABLE ERROR..\n\n" + e.getMessage());  
         }
     }
     
     public void searchPatient(String ref){
-        Object[] row = new Object[8];
-        Object[] colum = {"Visit ID","Patient ID","Fullname","National ID","Email","Gender","Phone"};
+        Object[] row = new Object[7];
+        Object[] colum = {"Reference","Date","Patient ID","Fullname","Visit ID","Visit Date","Done By"};
         
         DefaultTableModel mod = new DefaultTableModel();
         mod.setColumnIdentifiers(colum);
@@ -435,20 +430,21 @@ public class Doctor extends javax.swing.JFrame {
         try{
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
-           String query = "select p.patid, fname, lname, email, phone, gender, natid, v.status, v.id as vid, stage " +
-                            "from patients as p, visits as v " +
-                            "where p.patid = v.patid " +
-                            "and v.status = 'active' and v.stage = 'precheck'" +
-                            "and concat_ws(fname,lname,email,p.patid,natid) like '%"+ref+"%'";
+           String query = "select r.id as ref, fname, lname, v.date as vdate, p.patid, v.id as vid, r.date as pdate, r.done_by " +
+                            "from patients as p, visits as v, prescription as r " +
+                            "where p.patid = r.patid " +
+                            "and v.id = r.visitid " +
+                            "and r.status = 'active' " +
+                            "and concat_ws(fname,lname,p.patid,r.done_by) like '%"+ref+"%';";
            ResultSet rst=st.executeQuery(query);
            while(rst.next()){               
-               row[0] = rst.getString("vid");
-               row[2] = rst.getString("fname") + " " + rst.getString("lname");
-               row[3] = rst.getString("natid");
-               row[4] = rst.getString("email");
-               row[5] = rst.getString("gender");
-               row[1] = rst.getString("patid");
-               row[6] = rst.getString("phone");
+               row[0] = rst.getString("ref");
+               row[3] = rst.getString("fname") + " " + rst.getString("lname");
+               row[2] = rst.getString("patid");
+               row[4] = rst.getString("vid");
+               row[5] = rst.getString("vdate");
+               row[1] = rst.getString("pdate");
+               row[6] = rst.getString("done_by");
                  
                mod.addRow(row);
            }
@@ -475,13 +471,13 @@ public class Doctor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Doctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pharmacy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Doctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pharmacy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Doctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pharmacy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Doctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pharmacy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -489,7 +485,7 @@ public class Doctor extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Doctor().setVisible(true);
+                    new Pharmacy().setVisible(true);
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }
@@ -500,7 +496,6 @@ public class Doctor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;

@@ -400,6 +400,36 @@ public class controller {
         return visitId;
     }
     
+    public static void setPrescId(String em){
+        prescId = Integer.parseInt(em);
+    }
+    
+    public static boolean approvePrescription(
+            String status, String presc) {
+        Connection con = null;
+        Statement st = null;
+        
+        try {
+            con = DBConnect.getConnection();
+            st = con.createStatement();
+            
+            String query = "UPDATE prescription SET status='"+status+"', approved_by='"+getLoggedUser()+"' "
+                    + "WHERE id='"+presc+"'";
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.executeUpdate();
+            
+            System.out.println("Prescription updated successfully...!!");
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Prescription not updated.\n\tError: " + e);
+            JOptionPane.showMessageDialog(null, e, "ERROR", 0);
+            return false;
+        }
+
+    }
+    
     
     
 }
