@@ -6,12 +6,12 @@ package main;
 
 import java.awt.Font;
 import java.io.IOException;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import src_code.DBConnect;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import src_code.DBConnect;
 import src_code.Login;
 import src_code.controller;
 
@@ -19,19 +19,18 @@ import src_code.controller;
  *
  * @author cchimbadzwa
  */
-public class Nurse extends javax.swing.JFrame {
+public class Doctor extends javax.swing.JFrame {
 
     Connection con;
     PreparedStatement pst;
-    
     /**
-     * Creates new form Nurse
+     * Creates new form Doctor
      */
-    public Nurse() throws IOException {
+    public Doctor() throws IOException {
         initComponents();
         
         setLocationRelativeTo(null);
-//        if(DBConnect.readSettings()) DBConnect.createCon();
+        if(DBConnect.readSettings()) DBConnect.createCon();
         
         activeVisits();
         jButton5.setEnabled(false);
@@ -74,7 +73,7 @@ public class Nurse extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("NURSE PORTAL");
+        jLabel1.setText("DOCTOR PORTAL");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -187,7 +186,7 @@ public class Nurse extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("DO PRECHECK");
+        jButton5.setText("DO CONSULTATION");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -371,9 +370,8 @@ public class Nurse extends javax.swing.JFrame {
 
         String selected = model.getValueAt(row, 1).toString();
         controller.setPatId(selected);
-        
-        new preCheck().show(true);
 
+        new consult().show(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -405,7 +403,7 @@ public class Nurse extends javax.swing.JFrame {
         try{
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
-           ResultSet rst=st.executeQuery("select p.patid, fname, lname, email, phone, gender, natid, v.status, v.id as vid from patients as p, visits as v where p.patid = v.patid and v.status = 'active' and v.stage='admission'");
+           ResultSet rst=st.executeQuery("select p.patid, fname, lname, email, phone, gender, natid, v.status, v.id as vid from patients as p, visits as v where p.patid = v.patid and v.status = 'active' and v.stage='precheck'");
            while(rst.next()){               
                row[0] = rst.getString("vid");
                row[2] = rst.getString("fname") + " " + rst.getString("lname");
@@ -440,7 +438,7 @@ public class Nurse extends javax.swing.JFrame {
            String query = "select p.patid, fname, lname, email, phone, gender, natid, v.status, v.id as vid, stage " +
                             "from patients as p, visits as v " +
                             "where p.patid = v.patid " +
-                            "and v.status = 'active' and v.stage = 'admission'" +
+                            "and v.status = 'active' and v.stage = 'precheck'" +
                             "and concat_ws(fname,lname,email,p.patid,natid) like '%"+ref+"%'";
            ResultSet rst=st.executeQuery(query);
            while(rst.next()){               
@@ -457,7 +455,7 @@ public class Nurse extends javax.swing.JFrame {
            //con.close();
         }
         catch(SQLException e){
-          JOptionPane.showMessageDialog( null,"PATIENTs TABLE ERROR..\n\n" + e.getMessage());  
+          JOptionPane.showMessageDialog( null,"PATIENTS TABLE ERROR..\n\n" + e.getMessage());  
         }
     }
     /**
@@ -477,13 +475,13 @@ public class Nurse extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Nurse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Doctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Nurse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Doctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Nurse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Doctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Nurse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Doctor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -491,7 +489,7 @@ public class Nurse extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Nurse().setVisible(true);
+                    new Doctor().setVisible(true);
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }

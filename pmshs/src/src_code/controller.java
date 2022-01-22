@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
  * @author cchimbadzwa
  */
 public class controller {
-    public static String empId, userRole, patId, loggedUser;
+    public static String empId, userRole, patId, loggedUser, visitId;
+    public static int prescId;
     
     public static String unique_id() {
         String id;
@@ -279,7 +280,7 @@ public class controller {
     }
     
     public static boolean addConsultation(
-            String patid, String visitid, String description, String prescription) {
+            String patid, String visitid, String description, int prescription) {
         Connection con = null;
         CallableStatement csmt = null;
         
@@ -289,7 +290,7 @@ public class controller {
             csmt.setString(1, patid);
             csmt.setString(2, visitid);
             csmt.setString(5, description);
-            csmt.setString(6, prescription);
+            csmt.setInt(6, prescription);
             csmt.setString(7, "active");
             csmt.setString(3, getDate());
             csmt.setString(4, getLoggedUser());
@@ -322,7 +323,11 @@ public class controller {
             csmt.setString(6, getLoggedUser());
 
             csmt.execute();
+            
             System.out.println("Prescription added successfully...!!");
+            
+            prescId = determinePrescriptionId();
+            
             return true;
 
         } catch (Exception e) {
@@ -333,7 +338,7 @@ public class controller {
     }
     
     public static boolean addProcedure(
-            String patid, String visitid, String description, String dpt) {
+            String patid, String visitid, String description, String dpt, int presc) {
         Connection con = null;
         CallableStatement csmt = null;
         
@@ -347,6 +352,7 @@ public class controller {
             csmt.setString(6, "active");
             csmt.setString(3, getDate());
             csmt.setString(5, getLoggedUser());
+            csmt.setInt(8, presc);
 
             csmt.execute();
             System.out.println("Procedure added successfully...!!");
@@ -358,6 +364,42 @@ public class controller {
             return false;
         }
     }
+    
+    public static int determinePrescriptionId(){
+        Connection con = null;
+        Statement st = null;
+        int theId = 0;
+        
+        try {
+            con= DBConnect.getConnection();
+            st=con.createStatement();
+            String query = "select max(id) as myId from prescription";
+            ResultSet rst=st.executeQuery(query);
+            while(rst.next()){               
+                theId = rst.getInt("myId");
+            }
+            
+            return theId;
+
+        } catch (Exception e) {
+            System.out.println("Failed to get prescription.\n\tError: " + e);
+            JOptionPane.showMessageDialog(null, e, "ERROR", 0);
+            return theId;
+        }
+    }
+    
+    public static int getPrescId() {
+        return prescId;
+    }
+    
+    public static void setVisId(String em) {
+        visitId = em;
+    }
+
+    public static String getVisId() {
+        return visitId;
+    }
+    
     
     
 }
