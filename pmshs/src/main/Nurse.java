@@ -13,6 +13,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import src_code.Login;
+import src_code.controller;
 
 /**
  *
@@ -331,7 +332,7 @@ public class Nurse extends javax.swing.JFrame {
     private void jTable1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusLost
         // TODO add your handling code here:
         boolean resp = (jTable1.getSelectedRow() == -1);
-        System.out.println(jTable1.getSelectedRow());
+        // System.out.println(jTable1.getSelectedRow());
         if(resp){
             jButton5.setEnabled(false);
             jButton6.setEnabled(false);
@@ -365,7 +366,13 @@ public class Nurse extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
+
+        String selected = model.getValueAt(row, 1).toString();
+        controller.setPatId(selected);
         
+        new preCheck().show(true);
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -398,7 +405,7 @@ public class Nurse extends javax.swing.JFrame {
         try{
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
-           ResultSet rst=st.executeQuery("select p.patid, fname, lname, email, phone, gender, natid, v.status, v.id as vid from patients as p, visits as v where p.patid = v.patid and v.status = 'active'");
+           ResultSet rst=st.executeQuery("select p.patid, fname, lname, email, phone, gender, natid, v.status, v.id as vid from patients as p, visits as v where p.patid = v.patid and v.status = 'active' and v.stage='admission'");
            while(rst.next()){               
                row[0] = rst.getString("vid");
                row[2] = rst.getString("fname") + " " + rst.getString("lname");
@@ -430,11 +437,10 @@ public class Nurse extends javax.swing.JFrame {
         try{
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
-           String query = "select v.id as vid, p.patid, fname, lname, natid, email, gender, phone " +
+           String query = "select p.patid, fname, lname, email, phone, gender, natid, v.status, v.id as vid, stage " +
                             "from patients as p, visits as v " +
-                            "where p.patid=v.patid and p.patid in (" +
-                            "	select patid from visits where status='active'" +
-                            ")" +
+                            "where p.patid = v.patid " +
+                            "and v.status = 'active' and v.stage = 'admission'" +
                             "and concat_ws(fname,lname,email,p.patid,natid) like '%"+ref+"%'";
            ResultSet rst=st.executeQuery(query);
            while(rst.next()){               

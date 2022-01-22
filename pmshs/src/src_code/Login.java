@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import admin.main;
 import main.Clerk;
+import main.Nurse;
 
 /**
  *
@@ -205,7 +206,12 @@ public class Login extends javax.swing.JFrame {
                     }
                 }
                 else if(selected.equals("Nurse")){
-                    JOptionPane.showMessageDialog(null, "Nurse Portal Not Implemented");
+                    try {
+                        //                    JOptionPane.showMessageDialog(null, "Nurse Portal Not Implemented");
+                        new Nurse().show(true);
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+                    }
                 }
                 else if(selected.equals("Doctor")){
                     JOptionPane.showMessageDialog(null, "Doctor Portal Not Implemented");

@@ -46,7 +46,7 @@ public class DBConnect {
                 pwd = props.getProperty("pass");
             }
 
-            System.out.println( host + " " + port + " " + uname + " " + pwd);
+            // System.out.println( host + " " + port + " " + uname + " " + pwd);
             reader.close();
             
             if(port.equals("") || uname.equals("")){

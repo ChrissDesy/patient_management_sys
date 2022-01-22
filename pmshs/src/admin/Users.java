@@ -269,7 +269,7 @@ public class Users extends javax.swing.JFrame {
             if (row >= 0) {
 
                 try {
-                    DBConnect.getConnection();
+                    con = DBConnect.getConnection();
                     pst = con.prepareStatement("UPDATE users SET status='deleted' WHERE uname='"+selected+"'");
                     pst.executeUpdate();
                     

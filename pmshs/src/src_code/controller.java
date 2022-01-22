@@ -154,8 +154,8 @@ public class controller {
             csmt = con.prepareCall("INSERT into patients VALUES (0,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             csmt.setString(1, name);
             csmt.setString(2, sname);
-            csmt.setString(3, natid);
-            csmt.setString(4, email);
+            csmt.setString(4, natid);
+            csmt.setString(3, email);
             csmt.setString(5, gender);
             csmt.setString(6, phone);
             csmt.setString(7, addr);
@@ -185,10 +185,11 @@ public class controller {
         
         try {
             con = DBConnect.getConnection();
-            csmt = con.prepareCall("INSERT into visits VALUES (0,?,?,?)");
+            csmt = con.prepareCall("INSERT into visits VALUES (0,?,?,?,?)");
             csmt.setString(1, patId);
             csmt.setString(3, "active");
             csmt.setString(2, getDate());
+            csmt.setString(4, "admission");
 
             csmt.execute();
             System.out.println("Visit added successfully...!!");
@@ -268,7 +269,13 @@ public class controller {
     }
     
     public static String getLoggedUser() {
-        return loggedUser.equals("") ? "-" : loggedUser;
+        try{
+            return loggedUser.equals("") ? "-" : loggedUser;
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+            return "-";
+        }
     }
     
     public static boolean addConsultation(
