@@ -196,7 +196,12 @@ public class Specialist extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("VIEW DETAILS");
+        jButton6.setText("VIEW HISTORY");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("REFRESH TABLE");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -402,6 +407,17 @@ public class Specialist extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
+
+        String selected = model.getValueAt(row, 1).toString();
+        controller.setPatId(selected);
+
+        new procedureHistory().show(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     //    custom code
     public void activeVisits(){
