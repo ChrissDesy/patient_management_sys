@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author cchimbadzwa
  */
 public class controller {
-    public static String empId, userRole, patId, loggedUser, visitId;
+    public static String empId, userRole, patId, loggedUser, visitId, userSection;
     public static int prescId;
     
     public static String unique_id() {
@@ -128,7 +128,8 @@ public class controller {
             rs = ps.executeQuery();
             if (rs.next()) {
                 userRole = rs.getString("type");
-                loggedUser = rs.getString("uname");
+                loggedUser = rs.getString("lname") + " " + rs.getString("fname");
+                userSection = rs.getString("department");
                 return true;
             } else {
                 return false;
@@ -278,6 +279,17 @@ public class controller {
             return "-";
         }
     }
+    
+    public static String getUserSection() {
+        try{
+            return userSection.equals("") ? "-" : userSection;
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+            return "-";
+        }
+    }
+    
     
     public static boolean addConsultation(
             String patid, String visitid, String description, int prescription) {

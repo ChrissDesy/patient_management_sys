@@ -31,7 +31,7 @@ public class Pharmacy extends javax.swing.JFrame {
         
         setLocationRelativeTo(null);
         
-        if(DBConnect.readSettings()) DBConnect.createCon();
+        // if(DBConnect.readSettings()) DBConnect.createCon();
         activePrescriptions();
         jButton6.setEnabled(false);
         jTextField1.setEnabled(false);
