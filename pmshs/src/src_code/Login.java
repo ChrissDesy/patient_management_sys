@@ -13,6 +13,7 @@ import main.Clerk;
 import main.Doctor;
 import main.Nurse;
 import main.Pharmacy;
+import main.Specialist;
 
 /**
  *
@@ -224,7 +225,12 @@ public class Login extends javax.swing.JFrame {
                     }
                 }
                 else if(selected.equals("Specialist")){
-                    JOptionPane.showMessageDialog(null, "Specialist Portal Not Implemented");
+                    // JOptionPane.showMessageDialog(null, "Specialist Portal Not Implemented");
+                    try {
+                        new Specialist().show(true);
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+                    }
                 }
                 else if(selected.equals("Pharmacy")){
                     try {

@@ -350,13 +350,13 @@ public class controller {
     }
     
     public static boolean addProcedure(
-            String patid, String visitid, String description, String dpt, int presc) {
+            String patid, String visitid, String description, String dpt, int presc, String name) {
         Connection con = null;
         CallableStatement csmt = null;
         
         try {
             con = DBConnect.getConnection();
-            csmt = con.prepareCall("INSERT into procedures VALUES (0,?,?,?,?,?,?,?)");
+            csmt = con.prepareCall("INSERT into procedures VALUES (0,?,?,?,?,?,?,?,?,?)");
             csmt.setString(1, patid);
             csmt.setString(2, visitid);
             csmt.setString(7, description);
@@ -365,6 +365,7 @@ public class controller {
             csmt.setString(3, getDate());
             csmt.setString(5, getLoggedUser());
             csmt.setInt(8, presc);
+            csmt.setString(9, name);
 
             csmt.execute();
             System.out.println("Procedure added successfully...!!");
