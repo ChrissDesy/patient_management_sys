@@ -30,7 +30,7 @@ public class Doctor extends javax.swing.JFrame {
         initComponents();
         
         setLocationRelativeTo(null);
-//        if(DBConnect.readSettings()) DBConnect.createCon();
+        if(DBConnect.readSettings()) DBConnect.createCon();
         
         activeVisits();
         jButton5.setEnabled(false);

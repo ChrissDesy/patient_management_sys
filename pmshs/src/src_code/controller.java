@@ -292,13 +292,13 @@ public class controller {
     
     
     public static boolean addConsultation(
-            String patid, String visitid, String description, int prescription) {
+            String patid, String visitid, String description, int prescription, String refer) {
         Connection con = null;
         CallableStatement csmt = null;
         
         try {
             con = DBConnect.getConnection();
-            csmt = con.prepareCall("INSERT into consultation VALUES (0,?,?,?,?,?,?,?)");
+            csmt = con.prepareCall("INSERT into consultation VALUES (0,?,?,?,?,?,?,?,?)");
             csmt.setString(1, patid);
             csmt.setString(2, visitid);
             csmt.setString(5, description);
@@ -306,6 +306,7 @@ public class controller {
             csmt.setString(7, "active");
             csmt.setString(3, getDate());
             csmt.setString(4, getLoggedUser());
+            csmt.setString(8, refer);
 
             csmt.execute();
             System.out.println("Consultation added successfully...!!");

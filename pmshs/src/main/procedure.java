@@ -28,15 +28,15 @@ public class procedure extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         patId = controller.getPatId();
-        
+        // System.out.println(patId);
         try{
             Connection con = DBConnect.getConnection();
             Statement st = con.createStatement();
             String query = "select p.patid, fname, lname, email, phone, gender, natid, v.status, v.id as vid, stage, blood, weight, temprature, r.other as notes " +
                         "from patients as p, visits as v, precheck as r " +
                         "where p.patid = v.patid and r.visitid = v.id " +
-                        "and v.status = 'active' and v.stage = 'precheck'" +
-                        "and p.patid = '"+patId+"'";
+                        "and v.status = 'active' and v.stage in ('precheck', 'consult')" +
+                        "and p.patid = '" + patId + "'";
             ResultSet rs = st.executeQuery(query);
             if(rs.next()){
                 fname.setText(rs.getString("fname") + " " + rs.getString("lname"));

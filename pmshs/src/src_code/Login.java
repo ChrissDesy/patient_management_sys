@@ -56,6 +56,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -212,6 +213,7 @@ public class Login extends javax.swing.JFrame {
                     try {
                         //                    JOptionPane.showMessageDialog(null, "Nurse Portal Not Implemented");
                         new Nurse().show(true);
+                        dispose();
                     } catch (IOException ex) {
                         JOptionPane.showMessageDialog(null, ex);
                     }
@@ -220,6 +222,7 @@ public class Login extends javax.swing.JFrame {
 //                    JOptionPane.showMessageDialog(null, "Doctor Portal Not Implemented");
                     try {
                         new Doctor().show(true);
+                        dispose();
                     } catch (IOException ex) {
                         JOptionPane.showMessageDialog(null, ex);
                     }
@@ -228,6 +231,7 @@ public class Login extends javax.swing.JFrame {
                     // JOptionPane.showMessageDialog(null, "Specialist Portal Not Implemented");
                     try {
                         new Specialist().show(true);
+                        dispose();
                     } catch (IOException ex) {
                         JOptionPane.showMessageDialog(null, ex);
                     }
@@ -235,6 +239,7 @@ public class Login extends javax.swing.JFrame {
                 else if(selected.equals("Pharmacy")){
                     try {
                         new Pharmacy().show(true);
+                        dispose();
                     } catch (IOException ex) {
                         JOptionPane.showMessageDialog(null, ex);
                     }

@@ -29,7 +29,7 @@ public class Specialist extends javax.swing.JFrame {
         initComponents();
         
         setLocationRelativeTo(null);
-        if(DBConnect.readSettings()) DBConnect.createCon();
+        // if(DBConnect.readSettings()) DBConnect.createCon();
         
         activeVisits();
         jButton5.setEnabled(false);
@@ -389,6 +389,8 @@ public class Specialist extends javax.swing.JFrame {
 
         String selected = model.getValueAt(row, 1).toString();
         controller.setPatId(selected);
+        
+        // System.out.println(selected);
 
         new procedure().show(true);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -434,8 +436,8 @@ public class Specialist extends javax.swing.JFrame {
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
            ResultSet rst=st.executeQuery("select fname, lname, p.patid, email, phone, gender, natid, v.id as vid " +
-                                            "from patients as p, visits as v " +
-                                            "where p.patid = v.patid " +
+                                            "from patients as p, visits as v, consultation as c " +
+                                            "where c.refer = '" + controller.getUserSection() + "' and c.patid = p.patid and p.patid = v.patid " +
                                             "and v.status = 'active' and v.stage in ('precheck', 'consult')");
            while(rst.next()){               
                row[0] = rst.getString("vid");
@@ -469,8 +471,8 @@ public class Specialist extends javax.swing.JFrame {
            con= DBConnect.getConnection();
            Statement st=con.createStatement();
            String query = "select fname, lname, p.patid, email, phone, gender, natid, v.id as vid " +
-                            "from patients as p, visits as v " +
-                            "where p.patid = v.patid " +
+                            "from patients as p, visits as v, consultation as c " +
+                            "where c.refer = '" + controller.getUserSection() + "' and c.patid = p.patid and p.patid = v.patid " +
                             "and v.status = 'active' and v.stage in ('precheck', 'consult') " +
                             "and concat_ws(fname,lname,email,p.patid,natid) like '%"+ref+"%'";
            ResultSet rst=st.executeQuery(query);
