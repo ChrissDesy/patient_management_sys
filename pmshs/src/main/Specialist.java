@@ -39,7 +39,7 @@ public class Specialist extends javax.swing.JFrame {
         
         jLabel5.setText(controller.getUserSection());
         
-        if(controller.getEmpRole() == "Admin"){
+        if(controller.getEmpRole().equals("Admin")){
             jButton1.setVisible(false);
             jButton9.setVisible(true);
         }

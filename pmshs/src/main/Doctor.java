@@ -38,7 +38,7 @@ public class Doctor extends javax.swing.JFrame {
         jTextField1.setEnabled(false);
         jButton7.setEnabled(false);
         
-        if(controller.getEmpRole() == "Admin"){
+        if(controller.getEmpRole().equals("Admin")){
             jButton1.setVisible(false);
             jButton9.setVisible(true);
         }

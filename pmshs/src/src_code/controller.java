@@ -141,6 +141,7 @@ public class controller {
     }
     
     public static String getEmpRole() {
+        System.out.println(userRole);
         return userRole;
     }
     
