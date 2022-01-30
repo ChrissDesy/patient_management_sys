@@ -122,19 +122,26 @@ public class patientHistory extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(173, 216, 230));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Patient History");
 
+        jPanel13.setBackground(new java.awt.Color(173, 216, 230));
         jPanel13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jPanel6.setBackground(new java.awt.Color(173, 216, 230));
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Choose Visit");
 
+        jComboBox3.setBackground(new java.awt.Color(204, 255, 255));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -162,62 +169,82 @@ public class patientHistory extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel12.setBackground(new java.awt.Color(173, 216, 230));
         jPanel12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jPanel7.setBackground(new java.awt.Color(173, 216, 230));
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Patient Details");
 
         addres.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        addres.setForeground(new java.awt.Color(0, 0, 0));
         addres.setText(".");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Patient ID");
 
         pid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pid.setForeground(new java.awt.Color(0, 0, 0));
         pid.setText(".");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Fullname");
 
         fname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        fname.setForeground(new java.awt.Color(0, 0, 0));
         fname.setText(".");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Email");
 
         email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        email.setForeground(new java.awt.Color(0, 0, 0));
         email.setText(".");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("National ID");
 
         nid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nid.setForeground(new java.awt.Color(0, 0, 0));
         nid.setText(".");
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Phone");
 
         phone.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        phone.setForeground(new java.awt.Color(0, 0, 0));
         phone.setText(".");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Address");
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Gender");
 
         gender.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        gender.setForeground(new java.awt.Color(0, 0, 0));
         gender.setText(".");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Next of Kin");
 
         kin1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        kin1.setForeground(new java.awt.Color(0, 0, 0));
         kin1.setText(".");
 
         kin2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        kin2.setForeground(new java.awt.Color(0, 0, 0));
         kin2.setText(".");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -313,33 +340,43 @@ public class patientHistory extends javax.swing.JFrame {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        jPanel8.setBackground(new java.awt.Color(173, 216, 230));
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Precheck");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Temperature");
 
         temp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        temp.setForeground(new java.awt.Color(0, 0, 0));
         temp.setText(".");
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Blood Pressure");
 
         bpres.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bpres.setForeground(new java.awt.Color(0, 0, 0));
         bpres.setText(".");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Weight");
 
         weight.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        weight.setForeground(new java.awt.Color(0, 0, 0));
         weight.setText(".");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Notes");
 
         notes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        notes.setForeground(new java.awt.Color(0, 0, 0));
         notes.setText(".");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -395,29 +432,38 @@ public class patientHistory extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
+        jPanel10.setBackground(new java.awt.Color(173, 216, 230));
         jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Doctor's Consultation");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Prescription Details");
 
+        cprescText.setBackground(new java.awt.Color(204, 255, 255));
         cprescText.setColumns(20);
         cprescText.setRows(5);
+        cprescText.setBorder(null);
         cprescText.setEnabled(false);
         jScrollPane2.setViewportView(cprescText);
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Dispatch Status");
 
         dstat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dstat.setForeground(new java.awt.Color(0, 0, 0));
         dstat.setText(".");
 
         jScrollPane1.setEnabled(false);
 
+        ctext1.setBackground(new java.awt.Color(204, 255, 255));
         ctext1.setColumns(20);
         ctext1.setRows(5);
+        ctext1.setBorder(null);
         ctext1.setEnabled(false);
         jScrollPane1.setViewportView(ctext1);
 
@@ -466,34 +512,46 @@ public class patientHistory extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel11.setBackground(new java.awt.Color(173, 216, 230));
         jPanel11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Specialist's Procedure");
 
         jScrollPane3.setEnabled(false);
 
+        ptext1.setBackground(new java.awt.Color(204, 255, 255));
         ptext1.setColumns(20);
         ptext1.setRows(5);
+        ptext1.setBorder(null);
         ptext1.setEnabled(false);
         jScrollPane3.setViewportView(ptext1);
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("Prescription Details");
 
+        pprescText.setBackground(new java.awt.Color(204, 255, 255));
         pprescText.setColumns(20);
         pprescText.setRows(5);
+        pprescText.setBorder(null);
         pprescText.setEnabled(false);
         jScrollPane4.setViewportView(pprescText);
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setText("Dispatch Status");
 
         dstat1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dstat1.setForeground(new java.awt.Color(0, 0, 0));
         dstat1.setText(".");
 
+        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("Name");
 
+        jTextField1.setBackground(new java.awt.Color(204, 255, 255));
+        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextField1.setEnabled(false);
 
         jLabel27.setText(".");
@@ -606,6 +664,9 @@ public class patientHistory extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton1.setBackground(new java.awt.Color(173, 216, 230));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(java.awt.Color.red);
         jButton1.setText("CLOSE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -641,22 +702,7 @@ public class patientHistory extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -307,7 +307,7 @@ public class Login extends javax.swing.JFrame {
                     else{
                         try {
                             DBConnect.createCon();
-                            System.out.println("Success Con creation");
+                            // System.out.println("Success Con creation");
                         } catch (IOException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }

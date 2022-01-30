@@ -77,7 +77,7 @@ public class DBConnect {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:" + port + "/pmshsm", uname, pwd);
-            System.out.println("Connection established......");
+            // System.out.println("Connection established......");
             return true;
         } catch (Exception ex) {
             System.out.println("Error: " + ex);

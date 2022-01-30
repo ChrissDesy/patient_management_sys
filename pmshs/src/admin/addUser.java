@@ -58,77 +58,121 @@ public class addUser extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(173, 216, 230));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("ADD NEW USER");
 
+        jPanel2.setBackground(new java.awt.Color(173, 216, 230));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Firstname");
 
+        fname.setBackground(new java.awt.Color(204, 255, 255));
+        fname.setForeground(new java.awt.Color(0, 0, 0));
+        fname.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnameActionPerformed(evt);
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Phone");
 
+        phone.setBackground(new java.awt.Color(204, 255, 255));
+        phone.setForeground(new java.awt.Color(0, 0, 0));
+        phone.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneActionPerformed(evt);
             }
         });
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("National ID");
 
+        natid.setBackground(new java.awt.Color(204, 255, 255));
+        natid.setForeground(new java.awt.Color(0, 0, 0));
+        natid.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         natid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 natidActionPerformed(evt);
             }
         });
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Email");
 
+        email.setBackground(new java.awt.Color(204, 255, 255));
+        email.setForeground(new java.awt.Color(0, 0, 0));
+        email.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
             }
         });
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Lastname");
 
+        lname.setBackground(new java.awt.Color(204, 255, 255));
+        lname.setForeground(new java.awt.Color(0, 0, 0));
+        lname.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnameActionPerformed(evt);
             }
         });
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Username");
 
+        uname.setBackground(new java.awt.Color(204, 255, 255));
+        uname.setForeground(new java.awt.Color(0, 0, 0));
+        uname.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unameActionPerformed(evt);
             }
         });
 
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Gender");
 
+        gender.setBackground(new java.awt.Color(204, 255, 255));
+        gender.setForeground(new java.awt.Color(0, 0, 0));
         gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Female", "Male" }));
 
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("User Type");
 
+        urole.setBackground(new java.awt.Color(204, 255, 255));
+        urole.setForeground(new java.awt.Color(0, 0, 0));
         urole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Admin", "Clerk", "Doctor", "Nurse", "Pharmacy", "Specialist" }));
 
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Section");
 
+        dpt.setBackground(new java.awt.Color(204, 255, 255));
+        dpt.setForeground(new java.awt.Color(0, 0, 0));
         dpt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "choose...", "Admissions", "Laboratory", "Maternity", "Pharmacy", "Physiotherapy", "Radiograph", "Staff", "System" }));
 
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Password");
 
+        pwd.setBackground(new java.awt.Color(204, 255, 255));
+        pwd.setForeground(new java.awt.Color(0, 0, 0));
+        pwd.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jButton2.setBackground(new java.awt.Color(173, 216, 230));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setForeground(java.awt.Color.green);
         jButton2.setText("SAVE USER");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +275,9 @@ public class addUser extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton1.setBackground(new java.awt.Color(173, 216, 230));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(java.awt.Color.red);
         jButton1.setText("CLOSE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,22 +317,7 @@ public class addUser extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

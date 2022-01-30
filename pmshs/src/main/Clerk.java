@@ -431,7 +431,7 @@ public class Clerk extends javax.swing.JFrame {
     private void jTable1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusLost
         // TODO add your handling code here:
         boolean resp = (jTable1.getSelectedRow() == -1);
-        System.out.println(jTable1.getSelectedRow());
+        // System.out.println(jTable1.getSelectedRow());
         if(resp){
             jButton5.setEnabled(false);
             jButton6.setEnabled(false);

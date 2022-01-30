@@ -107,59 +107,79 @@ public class viewPrescription extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(173, 216, 230));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("VIEW PRESCRIPTION");
 
+        jPanel2.setBackground(new java.awt.Color(173, 216, 230));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jPanel3.setBackground(new java.awt.Color(173, 216, 230));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Patient Details");
 
         vnum.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        vnum.setForeground(new java.awt.Color(0, 0, 0));
         vnum.setText(".");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Patient ID");
 
         pid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pid.setForeground(new java.awt.Color(0, 0, 0));
         pid.setText(".");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Fullname");
 
         fname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        fname.setForeground(new java.awt.Color(0, 0, 0));
         fname.setText(".");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Email");
 
         email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        email.setForeground(new java.awt.Color(0, 0, 0));
         email.setText(".");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("National ID");
 
         nid.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nid.setForeground(new java.awt.Color(0, 0, 0));
         nid.setText(".");
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Phone");
 
         phone.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        phone.setForeground(new java.awt.Color(0, 0, 0));
         phone.setText(".");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Visit Number");
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Gender");
 
         gender.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        gender.setForeground(new java.awt.Color(0, 0, 0));
         gender.setText(".");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -246,9 +266,11 @@ public class viewPrescription extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(173, 216, 230));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Prescription Details");
 
         jScrollPane1.setEnabled(false);
@@ -258,8 +280,12 @@ public class viewPrescription extends javax.swing.JFrame {
         jTextArea1.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea1);
 
+        jPanel5.setBackground(new java.awt.Color(173, 216, 230));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jButton2.setBackground(new java.awt.Color(173, 216, 230));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setForeground(java.awt.Color.pink);
         jButton2.setText("APPROVE");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +293,9 @@ public class viewPrescription extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(173, 216, 230));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton3.setForeground(java.awt.Color.pink);
         jButton3.setText("DENY");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,19 +324,25 @@ public class viewPrescription extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("reference");
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("date");
 
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("requester");
 
         vnum1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        vnum1.setForeground(new java.awt.Color(0, 0, 0));
         vnum1.setText(".");
 
         vnum2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        vnum2.setForeground(new java.awt.Color(0, 0, 0));
         vnum2.setText(".");
 
         vnum3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        vnum3.setForeground(new java.awt.Color(0, 0, 0));
         vnum3.setText(".");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -388,6 +423,9 @@ public class viewPrescription extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton1.setBackground(new java.awt.Color(173, 216, 230));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(java.awt.Color.red);
         jButton1.setText("CLOSE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,22 +462,7 @@ public class viewPrescription extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
