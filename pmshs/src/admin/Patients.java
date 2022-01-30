@@ -29,7 +29,7 @@ public class Patients extends javax.swing.JFrame {
     public Patients() throws IOException {
         initComponents();
         
-        // if(DBConnect.readSettings()) DBConnect.createCon();
+        if(DBConnect.readSettings()) DBConnect.createCon();
         setLocationRelativeTo(null);
         
         jtPopulate();
