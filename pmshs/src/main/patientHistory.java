@@ -26,7 +26,7 @@ public class patientHistory extends javax.swing.JFrame {
         initComponents();
         
         setLocationRelativeTo(null);
-        jComboBox1.addItem("select visit...");
+        jComboBox3.addItem("select visit...");
         
         try {
                con = DBConnect.getConnection();
@@ -35,7 +35,7 @@ public class patientHistory extends javax.swing.JFrame {
 
                while (rs.next()) {
                    String a = rs.getString("visitid");
-                   jComboBox1.addItem(a);
+                   jComboBox3.addItem(a);
                }
                // System.out.println("Visits added to jCombo");
         } 
@@ -122,7 +122,6 @@ public class patientHistory extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1300, 675));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -233,34 +232,33 @@ public class patientHistory extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(pid, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(gender, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(nid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(phone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pid, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(addres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(gender, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(nid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(phone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -621,23 +619,22 @@ public class patientHistory extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(476, 476, 476)
+                .addGap(429, 429, 429)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
@@ -671,7 +668,7 @@ public class patientHistory extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        String selected = jComboBox1.getSelectedItem().toString();
+        String selected = jComboBox3.getSelectedItem().toString();
 
         if(!selected.equals("select visit...")){
             try {
@@ -687,24 +684,16 @@ public class patientHistory extends javax.swing.JFrame {
             con = DBConnect.getConnection();
             st = con.createStatement();
             String query = "select " +
-                "temprature, blood, weight, p.other as prnotes, p.date as prdate, c.description as cnotes, c.prescription as cpresc, " +
-                "c.date as cdate, name, s.date as pdate, s.description as pnotes, s.prescription as ppresc " +
-                "from precheck as p, consultation as c, procedures as s " +
-                "where p.patid = '" + patid + "' and c.patid = '" + patid + "' and s.patid = '" + patid + "' " +
-                "and p.visitid = " + ref + " and c.visitid = " + ref + " and s.visitid = " + ref + "";
+                "temprature, blood, weight, p.other as prnotes, p.date as prdate " +
+                "from precheck as p " +
+                "where p.patid = '" + patid +
+                "' and p.visitid = " + ref;
             ResultSet rs = st.executeQuery(query);
             if(rs.next()){
                 bpres.setText(rs.getString("blood"));
                 weight.setText(rs.getString("weight"));
                 temp.setText(rs.getString("temprature"));
                 notes.setText(rs.getString("prnotes"));
-                
-                ctext1.setText(rs.getString("cnotes"));
-                loadPrescription(rs.getInt("cpresc"), "consult");
-                
-                cprescText.setText(rs.getString("pnotes"));
-                jTextField1.setText(rs.getString("name"));
-                loadPrescription(rs.getInt("ppresc"), "procedure");
                 
             }
             else{
@@ -714,6 +703,8 @@ public class patientHistory extends javax.swing.JFrame {
         catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex,"ERROR",0);
         }
+        
+        loadConsultation(ref);
     }
     
     private void loadPatient() throws SQLException {
@@ -750,7 +741,7 @@ public class patientHistory extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(query);
             if(rs.next()){
                 if(typ.equals("consult")){
-                    ptext1.setText(rs.getString("description"));
+                    cprescText.setText(rs.getString("description"));
                     dstat.setText(rs.getString("status"));
                 }
                 else if(typ.equals("procedure")){
@@ -760,6 +751,59 @@ public class patientHistory extends javax.swing.JFrame {
             }
             else{
                 // JOptionPane.showMessageDialog(null, "No data found");
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex,"ERROR",0);
+        }
+    }
+    
+    private void loadConsultation(String ref) throws SQLException {
+        try{
+            con = DBConnect.getConnection();
+            st = con.createStatement();
+            String query = "select " +
+                "c.description as cnotes, c.prescription as cpresc, c.date as cdate " +
+                "from consultation as c " +
+                "where c.patid = '" + patid +
+                "' and c.visitid = " + ref;
+            ResultSet rs = st.executeQuery(query);
+            if(rs.next()){
+                ctext1.setText(rs.getString("cnotes"));
+                jLabel24.setText(rs.getString("cdate"));
+                loadPrescription(rs.getInt("cpresc"), "consult");
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No Consult data found");
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex,"ERROR",0);
+        }
+        
+        loadProcedure(ref);
+    }
+    
+    private void loadProcedure(String ref) throws SQLException {
+        try{
+            con = DBConnect.getConnection();
+            st = con.createStatement();
+            String query = "select " +
+                " name, s.date as pdate, s.description as pnotes, s.prescription as ppresc, department " +
+                "from procedures as s " +
+                "where s.patid = '" + patid + "' " +
+                " and s.visitid = " + ref + "";
+            ResultSet rs = st.executeQuery(query);
+            if(rs.next()){
+                ptext1.setText(rs.getString("pnotes"));
+                jLabel27.setText(rs.getString("pdate"));
+                jTextField1.setText(rs.getString("name") + "\t(" + rs.getString("department") + ")");
+                loadPrescription(rs.getInt("ppresc"), "procedure");
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No procedure data found");
             }
         }
         catch(Exception ex){
@@ -813,8 +857,6 @@ public class patientHistory extends javax.swing.JFrame {
     private javax.swing.JLabel fname;
     private javax.swing.JLabel gender;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -827,7 +869,6 @@ public class patientHistory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -836,7 +877,6 @@ public class patientHistory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -848,10 +888,6 @@ public class patientHistory extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
