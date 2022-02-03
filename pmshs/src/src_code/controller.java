@@ -141,7 +141,7 @@ public class controller {
     }
     
     public static String getEmpRole() {
-        System.out.println(userRole);
+        // System.out.println(userRole);
         return userRole;
     }
     
@@ -188,11 +188,12 @@ public class controller {
         
         try {
             con = DBConnect.getConnection();
-            csmt = con.prepareCall("INSERT into visits VALUES (0,?,?,?,?)");
+            csmt = con.prepareCall("INSERT into visits VALUES (0,?,?,?,?,?)");
             csmt.setString(1, patId);
             csmt.setString(3, "active");
             csmt.setString(2, getDate());
             csmt.setString(4, "admission");
+            csmt.setString(5, "-");
 
             csmt.execute();
             System.out.println("Visit added successfully...!!");

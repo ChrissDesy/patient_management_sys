@@ -476,7 +476,7 @@ public class Clerk extends javax.swing.JFrame {
 
                 try {
                     DBConnect.getConnection();
-                    pst = con.prepareStatement("UPDATE visits SET status='discharged' WHERE patid='"+selected+"' and status='active'");
+                    pst = con.prepareStatement("UPDATE visits SET status='discharged', dis_date='" + controller.getDate() + "' WHERE patid='"+selected+"' and status='active'");
                     pst.executeUpdate();
                     
                     JOptionPane.showMessageDialog(null,"PATIENT DISCHARGED..!!!","Confirmation",JOptionPane.INFORMATION_MESSAGE);
