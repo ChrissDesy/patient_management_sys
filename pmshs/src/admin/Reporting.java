@@ -97,6 +97,11 @@ public class Reporting extends javax.swing.JFrame {
         jLabel5.setText("3. Patient Consultation History ");
 
         jButton5.setText("Generate");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("4. Patient Procedure History ");
@@ -252,6 +257,11 @@ public class Reporting extends javax.swing.JFrame {
         // TODO add your handling code here:
         new report3().show(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        new report4().show(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
