@@ -413,6 +413,12 @@ public class addPatient extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if(kname.getText().equals("") || fname.getText().equals("") || lname.getText().equals("") || natid.getText().equals("") || email.getText().equals("")
+            || kemail.getText().toString().equals("") || phone.getText().equals("") || kphone.getText().toString().equals("") || gender.getSelectedItem().toString().equals("")  ){
+            JOptionPane.showMessageDialog(null, "Fields cannot be empty.", "ERROR",0);
+            return;
+        }
+        
         boolean resp = controller.addPatient(kname.getText(), fname.getText(), lname.getText(), natid.getText(), address.getText(), email.getText(), 
                 kemail.getText(), phone.getText(), kphone.getText(), gender.getSelectedItem().toString());
         

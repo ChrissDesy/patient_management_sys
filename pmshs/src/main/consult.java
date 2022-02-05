@@ -535,6 +535,11 @@ public class consult extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if(jTextArea1.getText().equals("Type notes here...") || jTextArea1.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "Notes cannot be empty.", "ERROR",0);
+            return;
+        }
+        
         int presc = controller.getPrescId();
         
         boolean resp = controller.addConsultation(pid.getText(), vnum.getText(), jTextArea1.getText(), presc, section.getSelectedItem().toString());

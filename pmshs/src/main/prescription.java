@@ -150,6 +150,11 @@ public class prescription extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if(jTextArea1.getText().equals("Type something here...") || jTextArea1.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "Prescription cannot be empty.", "ERROR",0);
+            return;
+        }
+        
         boolean resp = controller.addPrescription(controller.getPatId(), controller.getVisId(), jTextArea1.getText());
         
         if(resp){

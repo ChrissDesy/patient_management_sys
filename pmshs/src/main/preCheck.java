@@ -441,6 +441,11 @@ public class preCheck extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if(notes.getText().equals("") || temp.getText().equals("") || blood.getText().equals("") || weight.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "Fields cannot be empty.", "ERROR",0);
+            return;
+        }
+        
         boolean resp = controller.addPrecheck(pid.getText(), vnum.getText(), temp.getText(), blood.getText(), weight.getText(), notes.getText());
         
         if(resp){
