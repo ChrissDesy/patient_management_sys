@@ -264,6 +264,9 @@ public class Users extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        boolean resp = (jTable1.getSelectedRow() == -1);
+        if(resp){ JOptionPane.showMessageDialog(null, "Please select User", "ERROR",0); return;}
+        
         int dialogDelete=JOptionPane.showConfirmDialog(null,"Are you sure you want to delete this User?", "DELETE USER",JOptionPane.YES_NO_OPTION);
         if(dialogDelete==JOptionPane.YES_OPTION){      
             int row = jTable1.getSelectedRow();
@@ -295,6 +298,9 @@ public class Users extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        boolean resp = (jTable1.getSelectedRow() == -1);
+        if(resp){ JOptionPane.showMessageDialog(null, "Please select User", "ERROR",0); return;}
+        
         int row = jTable1.getSelectedRow();
         DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
 

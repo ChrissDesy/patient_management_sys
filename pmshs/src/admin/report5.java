@@ -176,6 +176,9 @@ public class report5 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        boolean resp = (jTable1.getSelectedRow() == -1);
+        if(resp){ JOptionPane.showMessageDialog(null, "Please select Prescription", "ERROR",0); return;}
+        
         int row = jTable1.getSelectedRow();
         DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
 

@@ -414,6 +414,9 @@ public class Nurse extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        boolean resp = (jTable1.getSelectedRow() == -1);
+        if(resp){ JOptionPane.showMessageDialog(null, "Please select Patient", "ERROR",0); return;}
+        
         int row = jTable1.getSelectedRow();
         DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
 
@@ -441,6 +444,9 @@ public class Nurse extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        boolean resp = (jTable1.getSelectedRow() == -1);
+        if(resp){ JOptionPane.showMessageDialog(null, "Please select Patient", "ERROR",0); return;}
+        
         int row = jTable1.getSelectedRow();
         DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
 

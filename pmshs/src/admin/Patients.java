@@ -259,6 +259,7 @@ public class Patients extends javax.swing.JFrame {
     private void jTable1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusLost
         // TODO add your handling code here:
         boolean resp = (jTable1.getSelectedRow() == -1);
+//        System.out.println(resp);
         if(resp){
             jButton4.setEnabled(false);
             jButton3.setEnabled(false);
@@ -272,6 +273,9 @@ public class Patients extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        boolean resp = (jTable1.getSelectedRow() == -1);
+        if(resp){ JOptionPane.showMessageDialog(null, "Please select Patient", "ERROR",0); return;}
+        
         int row = jTable1.getSelectedRow();
         DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
 
@@ -283,6 +287,9 @@ public class Patients extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        boolean resp = (jTable1.getSelectedRow() == -1);
+        if(resp){ JOptionPane.showMessageDialog(null, "Please select Patient", "ERROR",0); return;}
+        
         int dialogDelete=JOptionPane.showConfirmDialog(null,"Are you sure you want to delete this Patient?", "DELETE PATIENT",JOptionPane.YES_NO_OPTION);
         if(dialogDelete==JOptionPane.YES_OPTION){      
             int row = jTable1.getSelectedRow();
@@ -315,6 +322,9 @@ public class Patients extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        boolean resp = (jTable1.getSelectedRow() == -1);
+        if(resp){ JOptionPane.showMessageDialog(null, "Please select Patient", "ERROR",0); return;}
+        
         int row = jTable1.getSelectedRow();
         DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
 

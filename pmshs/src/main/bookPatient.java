@@ -29,7 +29,7 @@ public class bookPatient extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         jButton1.requestFocus();
         jButton3.setEnabled(false);
-        jButton4.setEnabled(false);
+//        jButton4.setEnabled(false);
     }
 
     /**
@@ -49,7 +49,6 @@ public class bookPatient extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -116,17 +115,12 @@ public class bookPatient extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(173, 216, 230));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(java.awt.Color.pink);
-        jButton3.setText("BOOK VISIT");
+        jButton3.setText("BOOK A VISIT");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-
-        jButton4.setBackground(new java.awt.Color(173, 216, 230));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton4.setForeground(java.awt.Color.pink);
-        jButton4.setText("CLEAR SEARCH");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -135,18 +129,14 @@ public class bookPatient extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(31, 31, 31)
-                .addComponent(jButton4)
-                .addGap(162, 162, 162))
+                .addGap(249, 249, 249))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(8, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addContainerGap())
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -264,20 +254,23 @@ public class bookPatient extends javax.swing.JFrame {
     private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
         // TODO add your handling code here:
         jButton3.setEnabled(true);
-        jButton4.setEnabled(true);
+//        jButton4.setEnabled(true);
     }//GEN-LAST:event_jTable1FocusGained
 
     private void jTable1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusLost
         // TODO add your handling code here:
         boolean resp = (jTable1.getSelectedRow() == -1);
         if(resp){
-            jButton4.setEnabled(false);
+//            jButton4.setEnabled(false);
             jButton3.setEnabled(false);
         }
     }//GEN-LAST:event_jTable1FocusLost
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        boolean respp = (jTable1.getSelectedRow() == -1);
+        if(respp){ JOptionPane.showMessageDialog(null, "Please select Patient", "ERROR",0); return;}
+        
         int row = jTable1.getSelectedRow();
         DefaultTableModel model= (DefaultTableModel)jTable1.getModel();
 
@@ -388,7 +381,6 @@ public class bookPatient extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
