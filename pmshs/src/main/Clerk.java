@@ -31,7 +31,7 @@ public class Clerk extends javax.swing.JFrame {
         
         setLocationRelativeTo(null);
         
-//        if(DBConnect.readSettings()) DBConnect.createCon();
+        if(DBConnect.readSettings()) DBConnect.createCon();
         
         activeVisits();
         jButton5.setEnabled(false);

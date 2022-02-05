@@ -91,9 +91,10 @@ public class Config extends JFrame {
 				try {
 					saveProperties();
 					JOptionPane.showMessageDialog(Config.this, 
-							"Properties were saved successfully!");	
-                                        dispose();
-                                        DBConnect.createCon();
+							"Properties were saved successfully! \n Please restart the application.");	
+                                        // dispose();
+                                        // DBConnect.createCon();
+                                        System.exit(0);
 				} catch (IOException ex) {
 					JOptionPane.showMessageDialog(Config.this, 
 							"Error saving properties file: " + ex.getMessage());		
